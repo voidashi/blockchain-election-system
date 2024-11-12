@@ -15,7 +15,19 @@ Este projeto implementa um **Sistema de Votação Blockchain** simples utilizand
 
 ### **Como Executar:**
 
-#### 1. **Deploy do Contrato**
+#### 1. **Iniciar o Nó Local**
+
+Para interagir com o contrato, certifique-se de que você tenha uma rede local do Hardhat em execução:
+
+```bash
+npx hardhat node
+```
+
+Isso irá fornecer uma lista de contas de teste com chaves privadas.
+
+---
+
+#### 2. **Deploy do Contrato**
 
 Certifique-se de que o contrato esteja implantado em uma rede local do Hardhat.
 
@@ -26,18 +38,6 @@ Execute o script de deploy:
 ```bash
 npx hardhat run scripts/deploy.js --network localhost
 ```
-
----
-
-#### 2. **Iniciar o Nó Local**
-
-Para interagir com o contrato, certifique-se de que você tenha uma rede local do Hardhat em execução:
-
-```bash
-npx hardhat node
-```
-
-Isso irá fornecer uma lista de contas de teste com chaves privadas.
 
 ---
 
