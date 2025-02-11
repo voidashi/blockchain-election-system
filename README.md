@@ -1,61 +1,103 @@
-# Sistema de Votação Blockchain
+# ⛓️ Blockchain Voting System
 
-Este projeto implementa um **Sistema de Votação Blockchain** simples utilizando **Ethereum** e **Hardhat**. O contrato permite adicionar candidatos, registrar eleitores, abrir/fechar sessões de votação e contar votos. O objetivo é fornecer transparência e segurança para o processo de votação.
+**Decentralized voting platform ensuring transparent and tamper-proof elections**  
+[![Ethereum](https://img.shields.io/badge/Blockchain-Ethereum-3C3C3D?logo=ethereum)](https://ethereum.org)
+[![Hardhat](https://img.shields.io/badge/Framework-Hardhat-FFF100?logo=hardhat)](https://hardhat.org)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
----
-
-### **Funcionalidades:**
-- **Adicionar Candidatos**: O administrador pode adicionar candidatos à eleição.
-- **Registrar Eleitores**: O administrador pode registrar eleitores.
-- **Votação**: Eleitores registrados podem votar nos candidatos.
-- **Controle de Votação**: O administrador pode abrir e fechar o período de votação.
-- **Resultados**: Após o fechamento da votação, é possível consultar os resultados.
+*Portuguese: [Leia em Português](#)*
 
 ---
 
-### **Como Executar:**
+## 🎯 Core Features
 
-#### 1. **Iniciar o Nó Local**
+### Election Management
+- **Candidate Registration** - Admin-only candidate addition
+- **Voter Enrollment** - Whitelist verified participants
+- **Voting Sessions** - Time-bound election periods
 
-Para interagir com o contrato, certifique-se de que você tenha uma rede local do Hardhat em execução:
+### Voting Process
+- 🗳️ Secure ballot casting
+- 🔒 Immutable vote recording
+- 📊 Real-time result tracking
 
+### Administrative Control
+- 🕒 Session management (open/close voting)
+- 🔍 Transparent result auditing
+- 🛡️ Role-based access control
+
+---
+
+## 🚀 Quick Start
+
+### 1. Local Network Setup
 ```bash
 npx hardhat node
 ```
+*Launches local Ethereum node with 20 test accounts*
 
-Isso irá fornecer uma lista de contas de teste com chaves privadas.
-
----
-
-#### 2. **Deploy do Contrato**
-
-Certifique-se de que o contrato esteja implantado em uma rede local do Hardhat.
-
-#### **Script de Deploy** (`scripts/deploy.js`):
-
-Execute o script de deploy:
-
+### 2. Contract Deployment
 ```bash
 npx hardhat run scripts/deploy.js --network localhost
 ```
+*Deploys VotingContract.sol to local network*
 
----
-
-#### 3. **Executar Scripts Automáticos**
-
-Execute o script para interagir com o contrato:
-
+### 3. Interaction Scripts
 ```bash
 npx hardhat run scripts/interact.js --network localhost
 ```
-
-Lembre-se de editar o script com o endereço do contrato, se necessário.
-
-Outros scripts de interacao estao disponiveis em `scripts/`
+*Sample workflow:*
+1. Admin adds candidates
+2. Register voters
+3. Open voting session
+4. Cast votes
+5. Close session
+6. Tally results
 
 ---
 
+## 🧩 Smart Contract Architecture
 
-### **Licença**
+```solidity
+// Simplified Interface
+contract VotingSystem {
+    function addCandidate(string memory _name) public onlyAdmin {}
+    function registerVoter(address _voter) public onlyAdmin {}
+    function vote(uint256 _candidateId) public onlyRegisteredVoter {}
+    function getResults() public view returns (uint256[] memory) {}
+}
+```
 
-Este projeto é licenciado sob a Licença MIT.
+---
+
+## 📂 Project Structure
+```
+.
+├── contracts/           # Solidity smart contracts
+│   └── VotingContract.sol
+├── scripts/            # Interaction scripts
+│   ├── deploy.js
+│   └── interact.js
+├── test/               # Test suite
+├── hardhat.config.js   # Network configuration
+└── ...                 # Standard Hardhat setup
+```
+
+---
+
+## 🔧 Development Workflow
+
+### Testing
+```bash
+npx hardhat test
+```
+
+### Script Customization
+1. Update `interact.js` with contract address
+2. Modify candidate/voter parameters
+3. Add new transaction workflows
+
+---
+
+## 📜 License
+MIT Licensed - Full terms in [LICENSE](LICENSE)
